@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const config = require('./dev');
 const FakeDb = require('./models/fake-db');
 const routes = require('./routes/rental');
+const cors = require('cors');
 
 mongoose.connect(config.DB_URI).then(()=>{
     const fakeDb = new FakeDb();
@@ -10,7 +11,7 @@ mongoose.connect(config.DB_URI).then(()=>{
 });
 
 const app =express();
-
+// app.use(cors);
 
 app.use('/api/v1/rentals',routes)
 
